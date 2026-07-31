@@ -1,0 +1,41 @@
+#!/bin/sh
+# nocoauthor-hook v1
+# Strips AI co-author trailers from commit messages.
+#
+# Config:
+#   git config --global nocoauthor.pattern 'claude|anthropic|copilot|cursor'
+#   git config --global nocoauthor.enabled false     # temporarily disable
+#
+# Bypass once, without changing config:
+#   NOCOAUTHOR=0 git commit ...
+
+f="$1"
+[ -n "$f" ] && [ -f "$f" ] || exit 0
+
+# Escape hatches.
+[ "${NOCOAUTHOR-}" = "0" ] && exit 0
+[ "$(git config --get nocoauthor.enabled 2>/dev/null)" = "false" ] && exit 0
+
+pattern="$(git config --get nocoauthor.pattern 2>/dev/null)"
+[ -n "$pattern" ] || pattern='claude|anthropic'
+
+tmp="$f.nocoauthor.$$"
+trap 'rm -f "$tmp"' EXIT
+
+# Drop matching trailers, then trim any blank lines left dangling at the end.
+# grep exits 1 when it filters out every line, so swallow the status.
+grep -viE "^[[:space:]]*Co-Authored-By:.*(${pattern})" "$f" > "$tmp" 2>/dev/null || :
+
+awk '
+  { line[NR] = $0 }
+  END {
+    last = NR
+    while (last > 0 && line[last] ~ /^[[:space:]]*$/) last--
+    for (i = 1; i <= last; i++) print line[i]
+  }
+' "$tmp" > "$tmp.trimmed" 2>/dev/null && mv "$tmp.trimmed" "$tmp" || rm -f "$tmp.trimmed"
+
+# Only overwrite if something survived — never hand git an empty message.
+[ -s "$tmp" ] && cat "$tmp" > "$f"
+
+exit 0
