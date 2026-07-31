@@ -1,0 +1,7 @@
+# These are shell scripts executed by git and /bin/sh. A CRLF checkout turns
+# the shebang into `#!/bin/sh\r`, which fails with "bad interpreter" — so pin
+# LF regardless of the cloner's core.autocrlf setting.
+*.sh            text eol=lf
+hooks/commit-msg text eol=lf
+
+*.md            text
