@@ -1,7 +1,7 @@
 {
   "name": "nocoauthor",
   "version": "1.0.0",
-  "description": "Git commit-msg hook that strips AI co-author trailers (Claude, Copilot, Cursor) from your commits",
+  "description": "Git commit-msg hook that strips AI co-author trailers from your commits — works with any tool, not just one",
   "bin": {
     "nocoauthor": "bin/cli.js"
   },
