@@ -16,16 +16,34 @@ the commit: an agent, an IDE, or you.
 
 ## Install
 
+Pick whichever you like — all three run the same installer.
+
+**npm** (no install needed, works on macOS, Linux and Windows):
+
 ```sh
-git clone https://github.com/YOURNAME/nocoauthor
+npx nocoauthor install
+```
+
+**Shell** (no Node required):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Otitodev/nocoauthor/main/bootstrap.sh | sh
+```
+
+**From source:**
+
+```sh
+git clone https://github.com/Otitodev/nocoauthor
 cd nocoauthor
 ./install.sh
 ```
 
-That installs globally, for every repository. To limit it to the repo you're
-standing in:
+All of these install globally, for every repository. To limit it to the repo
+you're standing in, pass `--repo`:
 
 ```sh
+npx nocoauthor install --repo
+curl -fsSL https://raw.githubusercontent.com/Otitodev/nocoauthor/main/bootstrap.sh | sh -s -- --repo
 ./install.sh --repo
 ```
 
@@ -101,7 +119,8 @@ and this hook catches anything that slips through from other tools.
 ## Uninstall
 
 ```sh
-./uninstall.sh          # or: ./uninstall.sh --repo
+npx nocoauthor uninstall     # or, from a clone:
+./uninstall.sh               # or: ./uninstall.sh --repo
 ```
 
 It removes only a hook it recognises as its own, points you at any backup it

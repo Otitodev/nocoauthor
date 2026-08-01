@@ -1,0 +1,48 @@
+{
+  "name": "nocoauthor",
+  "version": "1.0.0",
+  "description": "Git commit-msg hook that strips AI co-author trailers (Claude, Copilot, Cursor) from your commits",
+  "bin": {
+    "nocoauthor": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "hooks/",
+    "install.sh",
+    "uninstall.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "sh test/run.sh"
+  },
+  "keywords": [
+    "git",
+    "git-hooks",
+    "commit-msg",
+    "co-authored-by",
+    "trailer",
+    "claude",
+    "copilot",
+    "cursor",
+    "ai"
+  ],
+  "author": "Otitodev <otitodrichukwu@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Otitodev/nocoauthor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Otitodev/nocoauthor/issues"
+  },
+  "homepage": "https://github.com/Otitodev/nocoauthor#readme",
+  "engines": {
+    "node": ">=14"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ]
+}
