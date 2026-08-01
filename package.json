@@ -1,5 +1,5 @@
 {
-  "name": "nocoauthor",
+  "name": "git-nocoauthor",
   "version": "1.0.0",
   "description": "Git commit-msg hook that strips AI co-author trailers from your commits — works with any tool, not just one",
   "bin": {

@@ -18,8 +18,8 @@ const USAGE = `
   nocoauthor — strip AI co-author trailers from git commit messages
 
   Usage
-    npx nocoauthor install [--repo] [--force]
-    npx nocoauthor uninstall [--repo]
+    npx git-nocoauthor install [--repo] [--force]
+    npx git-nocoauthor uninstall [--repo]
 
   Options
     --repo    act on the current repository only, instead of globally

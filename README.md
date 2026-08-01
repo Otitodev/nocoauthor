@@ -21,7 +21,7 @@ Pick whichever you like — all three run the same installer.
 **npm** (no install needed, works on macOS, Linux and Windows):
 
 ```sh
-npx nocoauthor install
+npx git-nocoauthor install
 ```
 
 **Shell** (no Node required):
@@ -42,7 +42,7 @@ All of these install globally, for every repository. To limit it to the repo
 you're standing in, pass `--repo`:
 
 ```sh
-npx nocoauthor install --repo
+npx git-nocoauthor install --repo
 curl -fsSL https://raw.githubusercontent.com/Otitodev/nocoauthor/main/bootstrap.sh | sh -s -- --repo
 ./install.sh --repo
 ```
@@ -119,7 +119,7 @@ and this hook catches anything that slips through from other tools.
 ## Uninstall
 
 ```sh
-npx nocoauthor uninstall     # or, from a clone:
+npx git-nocoauthor uninstall # or, from a clone:
 ./uninstall.sh               # or: ./uninstall.sh --repo
 ```
 
